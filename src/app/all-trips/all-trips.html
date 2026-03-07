@@ -1,0 +1,24 @@
+<div class="trips-container">
+  <h1>All Trips</h1>
+  <button><a [routerLink]="['/add-trip']">Add New Trip</a></button>
+  <div class="trips-grid">
+    @for (trip of trips; track trip.id) {
+      <div class="trip-card">
+        <img [src]="trip.image" [alt]="trip.name" class="trip-image">
+        <div class="trip-content">
+          <h2>{{ trip.name }}</h2>
+          <p class="destination">📍 {{ trip.destination }}</p>
+          <p class="dates">📅 {{ trip.startDate }} - {{ trip.endDate }}</p>
+          <p class="description">{{ trip.description }}</p>
+          <p class="price">💰 ${{ trip.price }}</p>
+          <div class="actions">
+            <button class="edit-btn" [routerLink]="['/update-trip', trip.id]">✏️ Edit</button>
+            <button class="delete-btn" (click)="onDelete(trip.id)">🗑️ Delete</button>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <p>No trips available</p>
+    }
+  </div>
+</div>

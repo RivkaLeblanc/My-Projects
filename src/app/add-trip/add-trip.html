@@ -1,0 +1,114 @@
+<div class="form-container">
+  <h1>Add New Trip</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Trip Name:</label>
+      <input id="name" formControlName="name" placeholder="Enter trip name" />
+      @if (form.get('name')?.invalid && form.get('name')?.touched) {
+        <div class="error-message">
+          @if (form.get('name')?.errors?.['required']) {
+            <span>Trip name is required</span>
+          }
+          @if (form.get('name')?.errors?.['minlength']) {
+            <span>Name must be at least 3 characters</span>
+          }
+          @if (form.get('name')?.errors?.['maxlength']) {
+            <span>Name cannot exceed 20 characters</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="destination">Destination:</label>
+      <input id="destination" formControlName="destination" placeholder="Enter destination" />
+      @if (form.get('destination')?.invalid && form.get('destination')?.touched) {
+        <div class="error-message">
+          @if (form.get('destination')?.errors?.['required']) {
+            <span>Destination is required</span>
+          }
+          @if (form.get('destination')?.errors?.['minlength']) {
+            <span>Destination must be at least 3 characters</span>
+          }
+          @if (form.get('destination')?.errors?.['maxlength']) {
+            <span>Destination cannot exceed 20 characters</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="startDate">Start Date:</label>
+        <input id="startDate" type="date" formControlName="startDate" />
+        @if (form.get('startDate')?.invalid && form.get('startDate')?.touched) {
+          <div class="error-message">Start date is required</div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="endDate">End Date:</label>
+        <input id="endDate" type="date" formControlName="endDate" />
+        @if (form.get('endDate')?.invalid && form.get('endDate')?.touched) {
+          <div class="error-message">End date is required</div>
+        }
+      </div>
+    </div>
+
+    @if (form.errors?.['endDateBeforeStart'] && form.touched) {
+      <div class="error-message-global">❌ End date must be after start date</div>
+    }
+    @if (form.errors?.['startDateInPast'] && form.touched) {
+      <div class="error-message-global">❌ Start date cannot be in the past</div>
+    }
+    @if (form.errors?.['endDateInPast'] && form.touched) {
+      <div class="error-message-global">❌ End date cannot be in the past</div>
+    }
+    @if (form.errors?.['sameDate'] && form.touched) {
+      <div class="error-message-global">❌ Start and end dates cannot be the same</div>
+    }
+
+    <div class="form-group">
+      <label for="price">Price ($):</label>
+      <input id="price" type="number" formControlName="price" placeholder="Enter price" />
+      @if (form.get('price')?.invalid && form.get('price')?.touched) {
+        <div class="error-message">
+          @if (form.get('price')?.errors?.['required']) {
+            <span>Price is required</span>
+          }
+          @if (form.get('price')?.errors?.['min']) {
+            <span>Price must be a positive number</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image URL:</label>
+      <input id="image" formControlName="image" placeholder="Enter image URL" />
+      @if (form.get('image')?.invalid && form.get('image')?.touched) {
+        <div class="error-message">Image URL is required</div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description" rows="4" placeholder="Enter trip description (20-200 characters)"></textarea>
+      @if (form.get('description')?.invalid && form.get('description')?.touched) {
+        <div class="error-message">
+          @if (form.get('description')?.errors?.['required']) {
+            <span>Description is required</span>
+          }
+          @if (form.get('description')?.errors?.['minlength']) {
+            <span>Description must be at least 20 characters</span>
+          }
+          @if (form.get('description')?.errors?.['maxlength']) {
+            <span>Description cannot exceed 200 characters</span>
+          }
+        </div>
+      }
+    </div>
+
+    <button type="submit" class="submit-btn">Add Trip</button>
+  </form>
+</div>

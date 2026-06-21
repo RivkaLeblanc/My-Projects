@@ -58,6 +58,22 @@ A dynamic React-based web application for interactive user experiences.
 
 **Location:** `SnowGood - React/`
 
+### 4. **Java Project**
+A Java application organized with Maven and packaged as a complete project folder.
+
+**Tech Stack:**
+- Language: Java
+- Build Tool: Maven
+- Data: H2 file
+- Frontend: React + TypeScript
+
+**Features:**
+- Java application logic
+- Project structure with backend, frontend, and data assets
+- Easily buildable with Maven
+
+**Location:** `RecyleSystem - Java/`
+
 ---
 
 ## 🚀 Getting Started
@@ -78,6 +94,7 @@ My-Projects/
 ├── TripManager - Angular/
 ├── SongApp - Node.js/
 ├── SnowGood - React/
+├── Java project/
 └── README.md (this file)
 ```
 
@@ -85,12 +102,12 @@ My-Projects/
 
 ## 💡 Technologies Used Across Projects
 
-- **Frontend:** Angular, React, EJS
-- **Backend:** Node.js, Express.js
+- **Frontend:** Angular, React + TypeScript, EJS
+- **Backend:** Node.js, Express.js, Java
 - **Database:** MongoDB
 - **Authentication:** JWT, bcrypt
-- **Languages:** TypeScript, JavaScript
-- **Tools:** Git, npm, Angular CLI
+- **Languages:** TypeScript, JavaScript, Java
+- **Tools:** Git, npm, Angular CLI, Maven
 
 ---
 
@@ -100,6 +117,6 @@ All projects are licensed under the ISC License.
 
 ---
 
-**Last Updated:** May 11, 2026
+**Last Updated:** July 21, 2026
 
 For more information about each project, please visit their respective folders and read the project-specific README files.

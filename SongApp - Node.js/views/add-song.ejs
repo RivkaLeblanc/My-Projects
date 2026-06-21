@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Song</title>
+    <style>
+        :root {
+            --primary-color: #1db954;
+            --bg-color: #121212;
+            --card-bg: #181818;
+            --text-main: #ffffff;
+            --text-muted: #b3b3b3;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        input[type="text"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-color);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #1ed760;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+<h2>Add a New Song</h2>
+
+<form action="/songs/addSong" method="POST">
+  <div>
+    <label>Song Name:</label>
+    <input type="text" name="song_name" required>
+  </div>
+  
+  <div>
+    <label>Artist:</label>
+    <input type="text" name="artist" required>
+  </div>
+
+  <div>
+    <label>Lyrics:</label>
+    <textarea name="lyrics"></textarea>
+  </div>
+
+  <div>
+    <label>About:</label>
+    <textarea name="about"></textarea>
+  </div>
+
+  <div>
+    <label>YouTube Link:</label>
+    <input type="url" name="youtube_link">
+  </div>
+
+  <div>
+    <label>Picture URL:</label>
+    <input type="text" name="picture">
+  </div>
+
+  <button type="submit">Save Song</button>
+</form>
+
+</body>
+</html>

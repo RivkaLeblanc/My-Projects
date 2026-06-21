@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Song</title>
+    <style>
+        :root {
+            --primary-color: #1db954;
+            --bg-color: #121212;
+            --card-bg: #181818;
+            --text-main: #ffffff;
+            --text-muted: #b3b3b3;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1ed760 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        form {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        input[type="text"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-color);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #1ed760;
+            transform: scale(1.02);
+        }
+
+        .cancel-btn {
+            background-color: #333;
+        }
+
+        .cancel-btn:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>✏️ Edit Song</h2>
+        <form action="/songs/edit/<%= song._id %>" method="POST">
+            <div class="form-group">
+                <label for="song_name">Song Name:</label>
+                <input type="text" id="song_name" name="song_name" value="<%= song.song_name %>" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="artist">Artist:</label>
+                <input type="text" id="artist" name="artist" value="<%= song.artist %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lyrics">Lyrics:</label>
+                <textarea id="lyrics" name="lyrics"><%= song.lyrics %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="about">About:</label>
+                <textarea id="about" name="about"><%= song.about %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="youtube_link">YouTube Link:</label>
+                <input type="url" id="youtube_link" name="youtube_link" value="<%= song.youtube_link %>">
+            </div>
+
+            <div class="form-group">
+                <label for="picture">Picture URL:</label>
+                <input type="text" id="picture" name="picture" value="<%= song.picture %>">
+            </div>
+
+            <div class="button-group">
+                <a href="/songs/<%= song._id %>" class="cancel-btn" style="display: flex; align-items: center; justify-content: center; text-decoration: none; color: white;">Cancel</a>
+                <button type="submit">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
